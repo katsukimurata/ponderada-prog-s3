@@ -1,5 +1,8 @@
 # ponderada-prog-s3
 
+## Link do vídeo:
+[Vídeo](https://drive.google.com/file/d/1anUfYmyNR2PlECyTLK3JHMpyJvMk_G88/view?usp=sharing)
+
 ## Descrição
 
 Este repositório contém uma aplicação simples de CRUD desenvolvida em Node.js, com um front-end básico em HTML, CSS e JavaScript. A aplicação utiliza o banco de dados PostgreSQL hospedado em um RDS da AWS e o front-end no AWS S3.
