@@ -4,9 +4,8 @@ const cors = require('cors');
 
 const app = express();
 app.use(express.json());
-app.use(cors()); // Habilitar CORS para todas as rotas
+app.use(cors()); 
 
-// Configurar a conexão com o banco de dados PostgreSQL
 const pool = new Pool({
     user: 'postgres',
     host: 'database-1.c3nylx6njpgu.us-east-1.rds.amazonaws.com',
@@ -43,7 +42,6 @@ pool.connect((err) => {
     });
 });
 
-// Rota para criar um novo usuário
 app.post('/users', (req, res) => {
     const { nome, idade, cpf } = req.body;
     const query = 'INSERT INTO users (nome, idade, cpf) VALUES ($1, $2, $3) RETURNING *';
@@ -57,7 +55,6 @@ app.post('/users', (req, res) => {
     });
 });
 
-// Rota para obter todos os usuários
 app.get('/users', (req, res) => {
     const query = 'SELECT * FROM users';
     pool.query(query, (err, results) => {
@@ -70,7 +67,6 @@ app.get('/users', (req, res) => {
     });
 });
 
-// Rota para deletar um usuário pelo ID
 app.delete('/users/:id', (req, res) => {
     const { id } = req.params;
     const query = 'DELETE FROM users WHERE id = $1 RETURNING *';
@@ -88,7 +84,6 @@ app.delete('/users/:id', (req, res) => {
     });
 });
 
-// Iniciar o servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
